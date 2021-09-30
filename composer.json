@@ -1,0 +1,29 @@
+{
+    "name": "markhj/text",
+    "description": "A compact and efficient text parser for PHP 8.0+",
+    "type": "library",
+    "license": "Proprietary",
+    "autoload": {
+        "psr-4": {
+            "Markhj\\Text\\": "src/Text"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Markhj\\Text\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mhj",
+            "email": "5261387+markhj@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "markhj/collection": "^1.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.5"
+    }
+}
