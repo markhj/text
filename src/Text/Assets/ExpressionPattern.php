@@ -15,7 +15,45 @@ class ExpressionPattern
 		protected string $end = '',
 	) {
 		if (strlen($arguments) != 2) {
-			throw new InvalidExpressionPatternException;
+			throw new InvalidExpressionPatternException(
+				'Arguments character must be exactly two characters long'
+			);
+		}
+
+		if (empty($argumentQuotes)) {
+			throw new InvalidExpressionPatternException(
+				'You must have at least one argument quote'
+			);
+		}
+
+		if (strlen($argumentSeparator) !== 1) {
+			throw new InvalidExpressionPatternException(
+				'Argument separator must be exactly one character'
+			);
+		}
+
+		if (in_array($argumentSeparator, $argumentQuotes)) {
+			throw new InvalidExpressionPatternException(
+				'Argument separator must be different from all argument quote characters'
+			);
+		}
+
+		if (
+			in_array($arguments[0], $argumentQuotes)
+			|| in_array($arguments[1], $argumentQuotes)
+		) {
+			throw new InvalidExpressionPatternException(
+				'Argument parentheses must be different from all argument quote characters'
+			);
+		}
+
+		if (
+			$arguments[0] == $argumentSeparator
+			|| $arguments[1] == $argumentSeparator
+		) {
+			throw new InvalidExpressionPatternException(
+				'Argument parentheses must be different from argument separator'
+			);
 		}
 	}
 

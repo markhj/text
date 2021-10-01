@@ -9,8 +9,6 @@
 
 * Improve ArgumentReader
 
-* Quoted arguments (define quote via expression pattern)
-
 ## Finishing
 * Syntax
 * Samples
