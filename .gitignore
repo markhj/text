@@ -3,3 +3,7 @@ vendor/
 
 # PHPUnit files
 .phpunit.result.cache
+
+# Test-case files
+tests/Files/save.html
+tests/Files/save_new.html

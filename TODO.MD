@@ -1,86 +1,32 @@
-# Road map
+# To do
 
-* TokenCollection > Fragment > Expression
-* Fix the "levels" between expression, fragment, etc. -- it can be simplified a lot, for sure!!
-* Rename "Fragtment" to Expression towards the coder - maybe with a new wrapper class
+* GLOBAL: "use"
+* GLOBAL: instructions
 
-* Trim arguments so there can be spacing #w[1, 2]
+* Stronger validation on Expressionpattern -- length of separator, quotes, etc.
+
+* Laravel-helpers: camel, studly, etc. --- maybe a smart way to register all these things?? function(...) { ... }
+
+* Improve ArgumentReader
+
 * Quoted arguments (define quote via expression pattern)
 
-* DATA MAP MED ATTRIBUTES
+## Finishing
+* Syntax
+* Samples
 
-* forEach
-* forEach(callable $action, ExpressionPattern $pattern)
-* map
-* map(callable $action, ExpressionPattern $pattern)
+## Ideas
+* Multiple parsers #pluralize|ucfirst[some word]
 
-* Parser
-* Data map
-	* Object injection
-
-* Trim and Crop as instructions
-
-## Later
+# Roadmap
 * Conditions (if/else)
 * Loops
-
-# Pattern suggestions
-```php
-new Text('pluralize(1, 3)');
-```
-
-# Data maps
-
-## Basics
-```php
-$text->maps(MyCustomDataMap::class, AnotherMap::class);
-```
-
-```php
-$text->map($order)->with(OrderMap::class)->to('order');
-$text->map($customer)->with(CustomerMap::class)->to('customer');
-```
-
-## Global
-```php
-TextDefault::maps(GlobalMap::class);
-```
-
-## Override a value (global or local)
-```php
-$text->change('currency', 'GBP');
-```
-
-## Class
-```php
-class MyCustomDataMap extends MyCustomDataMap
-{
-	#[DataMapKey]
-	public function currency()
-	{
-
-	}
-}
-```
-
-## Inheritance
-
-```php
-class EmailTemplate extends Text
-{
-	public function before(): void
-	{
-		$this->maps(RelevantForEmailMap::class);
-	}
-}
-```
-
-# Parser
-
-```php
-$text->
-```
-
+* Traverse on pattern (forEach, map, rebase)
+	* For example HTML tags
+* Improve Text::use
+* Organize tests better
+* Ensure everything is covered in test
+* Cursor::toNext behavior when not found
 
 # Pluralization
 
@@ -99,11 +45,11 @@ Hello #plural[{count}|world|worldy|worlds]
 
 ```
 $text = new Text('
-			@set locale = da_DK
-			Hello #plural[{count}|world|worlds]
-		');
+	@set locale = da_DK
+	Hello #plural[{count}|world|worlds]
+');
 
-		$text->data()->set('count', 2);
+$text->data()->set('count', 2);
 
-		$text->on('plural')->do(Pluralize::class);
+$text->on('plural')->do(Pluralize::class);
 ```

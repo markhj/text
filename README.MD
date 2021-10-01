@@ -8,6 +8,9 @@ The library additionally requires mbstring extension.
 composer require markhj/text
 ```
 
+# Samples
+We have samples 
+
 # Usage
 Please refer to the ````docs```` folder for more detailed documentation.
 

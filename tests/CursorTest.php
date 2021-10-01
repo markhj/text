@@ -322,4 +322,18 @@ class CursorTest extends TestCase
 			$cursor->get()
 		);
 	}
+
+	/**
+	 * @test
+	 */
+	public function toNext(): void
+	{
+		$text = new Cursor('Hello world. What is up? Are you happy?');
+
+		$text->toNext('.');
+
+		$this->assertEquals(11, $text->position());
+		$this->assertEquals(23, $text->toNext('?')->position());
+		$this->assertEquals(38, $text->toNext('?')->position());
+	}
 }

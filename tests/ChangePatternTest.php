@@ -126,12 +126,12 @@ class ChangePatternTest extends TestCase
 	 */
 	public function crazyOne(): void
 	{
-		$text = new Text('Hello FUNC:w&&{1...2...3}Ø->Æ world');
+		$text = new Text('Hello FUNC:w&&{1.2.3}Ø->Æ world');
 		$pattern = new ExpressionPattern(
 			prefix: 'FUNC:',
 			suffix: '&&',
 			arguments: '{}',
-			argumentSeparator: '...',
+			argumentSeparator: '.',
 			end: 'Ø->Æ'
 		);
 

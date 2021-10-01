@@ -3,6 +3,7 @@
 namespace Markhj\Text\Assets;
 
 use Markhj\Text\Text;
+use Markhj\Text\Assets\Repository;
 use Markhj\Text\Assets\Fragments\Fragment;
 
 class Instruction
@@ -25,10 +26,13 @@ class Instruction
 		return $this->index;
 	}
 
-	public function execute(Fragment $fragment): string
+	public function execute(
+		Fragment $fragment,
+		Repository $repository
+	): string
 	{
 		$callable = $this->action;
 
-		return $callable($fragment);
+		return $callable($fragment, $repository);
 	}
 }

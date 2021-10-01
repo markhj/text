@@ -41,6 +41,7 @@ class Tokenizer
 			}
 
 			$collection->push(new ExpressionFragment(new Expression($text, $pattern)));
+			
 			$cursor->move($text);
 		}
 
@@ -49,16 +50,5 @@ class Tokenizer
 		}
 
 		return $collection;
-	}
-
-	public function glue(FragmentCollection $collection): string
-	{
-		$string = '';
-
-		foreach ($collection as $fragment) {
-			$string .= $fragment->get();
-		}
-
-		return $string;
 	}
 }

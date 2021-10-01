@@ -11,7 +11,8 @@ class ExpressionPattern
 		protected string $suffix = '',
 		protected string $arguments = '[]',
 		protected string $argumentSeparator = '|',
-		protected string $end = ''
+		protected array $argumentQuotes = ['\'', '"'],
+		protected string $end = '',
 	) {
 		if (strlen($arguments) != 2) {
 			throw new InvalidExpressionPatternException;
@@ -21,6 +22,11 @@ class ExpressionPattern
 	public function __toString()
 	{
 		return $this->toRegExp();
+	}
+
+	public function argumentQuotes(): array
+	{
+		return $this->argumentQuotes;
 	}
 
 	public function argumentSeparator(): string

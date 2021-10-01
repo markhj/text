@@ -28,7 +28,7 @@ class TokenizerTest extends TestCase
 		// Expression patterns must be ommitted, so this result is correct
 		$this->assertEquals(
 			'Hello  World',
-			(new Tokenizer)->glue($tokens)
+			$tokens->glue()
 		);
 	}
 
@@ -65,7 +65,7 @@ class TokenizerTest extends TestCase
 
 		$this->assertEquals(
 			' More advanced   example to try with ',
-			(new Tokenizer)->glue($tokens)
+			$tokens->glue()
 		);
 	}
 }

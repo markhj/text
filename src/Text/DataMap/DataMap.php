@@ -3,14 +3,42 @@
 namespace Markhj\Text\DataMap;
 
 use Markhj\Text\Assets\DataCollection;
+use Markhj\Text\Assets\AttributeReader;
+use Markhj\Text\Assets\AttributeContainer;
+use Markhj\Text\Attributes\DataMap\DataMapKey;
 
 abstract class DataMap
 {
 	protected DataCollection $collection;
 
-	final public function __construct()
+	public function __construct()
 	{
 		$this->collection = new DataCollection;
+
+		$this->mapProperties();
+		$this->mapMethods();
+	}
+
+	final protected function mapMethods(): void
+	{
+		(new AttributeReader)
+			->methodsWith($this, DataMapKey::class)
+			->forEach(function(AttributeContainer $container) {
+				$method = $container->get();
+
+				$this->collection->set($method->getName(), $this->{$method->getName()}());
+			});
+	}
+
+	final protected function mapProperties(): void
+	{
+		(new AttributeReader)
+			->propertiesWith($this, DataMapKey::class)
+			->forEach(function(AttributeContainer $container) {
+				$property = $container->get();
+
+				$this->collection->set($property->getName(), $property->getValue($this));
+			});
 	}
 
 	final public function flatten(): array

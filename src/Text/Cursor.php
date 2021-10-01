@@ -2,6 +2,7 @@
 
 namespace Markhj\Text;
 
+use Markhj\Text\Exceptions\LoopProtectionException;
 use Markhj\Collection\Collection;
 
 /**
@@ -35,6 +36,11 @@ class Cursor
 	public function get(): string
 	{
 		return $this->text;
+	}
+
+	public function char(): ?string
+	{
+		return $this->text[$this->position()] ?? null;
 	}
 
 	public function delete(int $chars = 1): Cursor
@@ -88,6 +94,18 @@ class Cursor
 		return $collection;
 	}
 
+	public function toNext(string $char): Cursor
+	{
+		$substr = mb_substr($this->text, $this->position() + 1);
+		$pos = strpos($substr, $char) + 1;
+
+		if (is_int($pos)) {
+			$this->move($pos);
+		}
+
+		return $this;
+	}
+
 	public function position(): int
 	{
 		return $this->position;
@@ -134,7 +152,7 @@ class Cursor
 		return $this->position() >= mb_strlen($this->text);
 	}
 
-	public function move(int|string|Text $size): Cursor
+	public function move(int|string|Text $size = 1): Cursor
 	{
 		$move = match (true) {
 			is_int($size) => $size,
@@ -143,6 +161,32 @@ class Cursor
 		};
 
 		$this->set($this->position() + $move);
+
+		return $this;
+	}
+
+	public function prev(): Cursor
+	{
+		return $this->move(-1);
+	}
+
+	public function next(): Cursor
+	{
+		return $this->move();
+	}
+
+	public function while(callable $action): Cursor
+	{
+		$counter = 0;
+
+		while (!$this->ended()) {
+			$action($this);
+
+			$counter++;
+			if ($counter > 100000) {
+				throw new LoopProtectionException;
+			}
+		}
 
 		return $this;
 	}

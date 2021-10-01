@@ -36,9 +36,4 @@ class ExpressionFragment extends Fragment
 	{
 		return $this->expression->arguments();
 	}
-
-	public function argument(string|int $key): mixed
-	{
-		return $this->expression->arguments()->get($key);
-	}
 }

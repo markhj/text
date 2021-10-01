@@ -20,4 +20,18 @@ class InitTest extends TestCase
 			(string) $text
 		);
 	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function doubled(): void
+	{
+		$text = new Text(new Text('Hello world'));
+
+		$this->assertEquals(
+			'Hello world',
+			(string) $text
+		);
+	}
 }
