@@ -61,7 +61,12 @@ class GlobalInstructionsTest extends BaseTest
 	{
 		Text::global()->setExpressionPattern(
 			new ExpressionPattern(
-				prefix: '*'
+				prefix: '*',
+				suffix: '',
+				arguments: '[]',
+				argumentSeparator: '|',
+				argumentQuotes: ['\'', '"'],
+				end: ''
 			)
 		);
 

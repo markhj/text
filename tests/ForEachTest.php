@@ -49,7 +49,14 @@ class ForEachTest extends BaseTest
 	public function customPattern(): void
 	{
 		$text = new Text('Hello &w[] world &g[]!');
-		$pattern = new ExpressionPattern('&');
+		$pattern = new ExpressionPattern(
+			prefix: '&',
+			suffix: '',
+			arguments: '[]',
+			argumentSeparator: '|',
+			argumentQuotes: ['\'', '"'],
+			end: ''
+		);
 
 		$text->on('w')->do(function() {
 			return 'test';

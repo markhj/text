@@ -237,7 +237,7 @@ class Text implements RegistersUse
 	): Text
 	{
 		$this
-			->tokenize($pattern)
+			->tokenize($pattern ?? $this->expressionPattern)
 			->filter(function(Fragment $fragment) {
 				return $fragment->isExpression();
 			})->forEach(function(Fragment $fragment) use($action) {
@@ -252,7 +252,7 @@ class Text implements RegistersUse
 		?ExpressionPattern $pattern = null
 	): FragmentCollection
 	{
-		return $this->tokenize($pattern)
+		return $this->tokenize($pattern ?? $this->expressionPattern)
 			->map(function(Fragment $fragment) use($action): Fragment {
 				if (!$fragment->isExpression()) {
 					return $fragment;

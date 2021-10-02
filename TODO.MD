@@ -10,7 +10,10 @@ Hello @name()
 Hello name<arg1, arg2>
 Hello t:name()
 Hello x:name()
-Hello >:name()
+Hello x:name()
+
+Hello name:()!
+
 ```
 
 * Syntax

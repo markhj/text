@@ -40,7 +40,7 @@ class InitTest extends BaseTest
 	 */
 	public function defaultPattern(): void
 	{
-		$text = new Text('Hello x:name()!');
+		$text = new Text('Hello name:()!');
 
 		$text->on('name')->do(function() {
 			return 'world';
