@@ -1,6 +1,6 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Test\Decoration;
 
 use Markhj\Text\Text;
 use PHPUnit\Framework\TestCase;
@@ -15,12 +15,12 @@ class CropTest extends TestCase
 	{
 		$this->assertEquals(
 			'Hello',
-			(string) (new Text('Hello world'))->crop(0, 5)
+			(string) (new Text('Hello world'))->revise()->crop(0, 5)
 		);
 
 		$this->assertEquals(
 			'ello',
-			(string) (new Text('Hello world'))->crop(1, 4)
+			(string) (new Text('Hello world'))->revise()->crop(1, 4)
 		);
 	}
 
@@ -32,7 +32,7 @@ class CropTest extends TestCase
 	{
 		$this->assertEquals(
 			'world',
-			(string) (new Text('Hello world'))->crop(6, 500)
+			(string) (new Text('Hello world'))->revise()->crop(6, 500)
 		);
 	}
 }

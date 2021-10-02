@@ -67,6 +67,11 @@ class Text
 		return self::$global;
 	}
 
+	public function clone(): Text
+	{
+		return new Text($this->parse());
+	}
+
 	public function on(string $index): Text|TextGlobal
 	{
 		$this->index = $index;
@@ -94,6 +99,13 @@ class Text
 		return $this;
 	}
 
+	public function set(string $string): Text
+	{
+		$this->template = $string;
+
+		return $this;
+	}
+
 	public function template(): string
 	{
 		return $this->template;
@@ -104,32 +116,6 @@ class Text
 		$this->expressionPattern = $pattern;
 
 		return $this;
-	}
-
-	public function crop(int $from, int $length): Text
-	{
-		$this->template = mb_substr($this->template, $from, $length);
-
-		return $this;
-	}
-
-	public function trim(string $char = ' '): Text
-	{
-		return $this->leftTrim($char)->rightTrim($char);
-	}
-
-	public function leftTrim(string $char = ' '): Text
-	{
-		$this->template = ltrim($this->template, $char);
-
-		return $this;
-	}
-
-	public function rightTrim(string $char = ' '): Text
-	{
-		$this->template = rtrim($this->template, $char);
-
-		return $this;		
 	}
 
 	public function repository(): Repository
@@ -201,11 +187,6 @@ class Text
 		}
 
 		return $fragment;
-	}
-
-	public function substr(int $offset, ?int $length = null): Text
-	{
-		return new Text(mb_substr((string) $this, $offset, $length));
 	}
 
 	public function length(): int
@@ -304,5 +285,10 @@ class Text
 		$this->template = $this->iterate($action, $pattern)->glue();
 
 		return $this;
+	}
+
+	public function revise(): Decoration
+	{
+		return new Decoration($this);
 	}
 }

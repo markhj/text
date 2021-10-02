@@ -3,10 +3,6 @@
 * GLOBAL: "use"
 * GLOBAL: instructions
 
-* Stronger validation on Expressionpattern -- length of separator, quotes, etc.
-
-* Laravel-helpers: camel, studly, etc. --- maybe a smart way to register all these things?? function(...) { ... }
-
 * Improve ArgumentReader
 
 ## Finishing
@@ -25,6 +21,14 @@
 * Organize tests better
 * Ensure everything is covered in test
 * Cursor::toNext behavior when not found
+
+# Revised utils
+```php
+$text->decorate()->camelcase(); 	// Do on object itself
+$text->getAs()->camelcase(); 		// Get a copy
+
+public function getAs(): TextUtils; 		// But better name for TextUtils
+```
 
 # Pluralization
 
