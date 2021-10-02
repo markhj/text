@@ -6,18 +6,21 @@ use Markhj\Collection\Collection;
 use Markhj\Text\Exceptions\IndexNotSelectedException;
 use Markhj\Text\Exceptions\MissingExpressionNameException;
 use Markhj\Text\Assets\Fragments\Fragment;
+use Markhj\Text\Assets\Collections\UseCollection;
 use Markhj\Text\Assets\Instruction;
 use Markhj\Text\Assets\ExpressionPattern;
 use Markhj\Text\Assets\FragmentCollection;
 use Markhj\Text\Assets\Repository;
 use Markhj\Text\Assets\TextGlobal;
+use Markhj\Text\Assets\UseToInstruction;
 use Markhj\Text\Parsers\Parser;
 use Markhj\Text\Parsers\PrintVariable;
 use Markhj\Text\Attributes\DataMap\DefaultParserName;
 use Markhj\Text\Traits\HandlesInstructions;
+use Markhj\Text\Contracts\RegistersUse;
 use ReflectionClass;
 
-class Text
+class Text implements RegistersUse
 {
 	protected string $template;
 	protected ?ExpressionPattern $expressionPattern = null;
@@ -25,6 +28,7 @@ class Text
 	protected $whenMissingParser;
 	protected int|string|null $index = null;
 	protected Collection $instructions;
+	protected UseCollection $useCollection;
 
 	protected static TextGlobal $global;
 
@@ -35,6 +39,7 @@ class Text
 		$this->template = $this->encode($template);
 		$this->instructions = new Collection;
 		$this->repository = new Repository;
+		$this->useCollection = new UseCollection;
 
 		$this->whenMissingParser = function(
 			Fragment $fragment,
@@ -43,7 +48,9 @@ class Text
 			return $fragment->foundation();
 		};
 
-		$this->use(PrintVariable::class);
+		$this->use(
+			PrintVariable::class
+		);
 
 		$this->applyGlobal();
 	}
@@ -56,6 +63,12 @@ class Text
 	protected function applyGlobal(): void
 	{
 		$this->repository()->merge($this->global()->repository());
+
+		foreach ($this->global()->instructions() as $instruction) {
+			$this
+				->on($instruction->index())
+				->do($instruction->getAction());
+		}
 	}
 
 	public static function global(): TextGlobal
@@ -72,19 +85,15 @@ class Text
 		return new Text($this->parse());
 	}
 
-	public function on(string $index): Text|TextGlobal
+	public function on(string $index): Text
 	{
 		$this->index = $index;
 
 		return $this;
 	}
 
-	public function do(callable $action): Text|TextGlobal
+	public function do(callable $action): Text
 	{
-		if (is_null($this->index)) {
-			throw new IndexNotSelectedException;
-		}
-
 		$instruction = (new Instruction($this->index))->setAction($action);
 
 		$this->instructions->push($instruction);
@@ -209,31 +218,14 @@ class Text
 
 	public function use(
 		string $className,
-		?string $useOn = null
+		?string $on = null
 	): Text
 	{
-		$parser = new $className;
-		$reflection = new ReflectionClass($parser);
-		$attributes = $reflection->getAttributes();
-		$on = null;
-
-		foreach ($attributes as $attribute) {
-			if ($attribute->getName() == DefaultParserName::class) {
-				$on = $attribute->newInstance()->getName();
-			}
-		}
-
-		if ($useOn) {
-			$on = $useOn;
-		} else if (!$on) {
-			throw new MissingExpressionNameException;
-		}
+		$instruction = (new UseToInstruction)->make($className, $on);
 
 		return $this
-			->on($on)
-			->do(function($fragment, $repository) use ($parser) {
-				return $parser->parse($fragment, $repository);
-			});
+			->on($instruction->index())
+			->do($instruction->getAction());
 	}
 
 	public function forEach(

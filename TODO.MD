@@ -1,13 +1,5 @@
 # To do
 
-* GLOBAL: "use"
-* GLOBAL: instructions
-
-```php
-
-```
-
-## Finishing
 * Syntax
 * Samples
 
