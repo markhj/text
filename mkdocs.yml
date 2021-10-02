@@ -1,3 +1,6 @@
 site_name: markhj/text
 theme:
   name: material
+nav:
+  - 'index.md'
+  - 'cursor.md'
