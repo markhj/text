@@ -6,15 +6,19 @@ nav:
   - 'Basics':
     - 'Text': 'text/basics.md'
     - 'Text from file': 'text/textfromfile.md'
+    - 'Iterators': 'text/iterators.md'
     - 'Revise': 'text/decoration.md'
     - 'Parser': 'text/parserbasics.md'
-    - 'Repository': 'text/repository.md'
   - 'Data maps':
     - 'Data maps': 'datamaps/datamaps.md'
+    - 'Repository': 'text/repository.md'
+    - 'Namespaces': 'datamaps/namespaces.md'
     - 'Static maps': 'datamaps/static-datamaps.md'
     - 'Global maps': 'datamaps/global-datamaps.md'
   - 'Parsers':
-    - 'Custom parser': 'parsers/custom-parser.md'
+    - 'Basics': 'parsers/parser-basics.md'
+    - 'Native parsers': 'parsers/native-parsers.md'
+    - 'Parser class': 'parsers/custom-parser.md'
     - 'Global parsers': 'parsers/global-parser.md'
   - 'Expression patterns':
     - 'Custom pattern': 'expression-patterns/custompattern.md'
@@ -22,3 +26,5 @@ nav:
   - 'Cursor':
     - 'Cursor basics': 'cursor/basics.md'
     - 'Slicing': 'cursor/slicing.md'
+  - 'Advanced concepts':
+      'Fragments': 'advanced/fragments.md'

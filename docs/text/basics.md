@@ -1,5 +1,10 @@
 # Text
 
+## Basic use
+
+(string)
+->parse()
+
 ## Basic manipulations
 Carry out manipulations on the current `Text` instance itself.
 ```php
