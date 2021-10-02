@@ -7,9 +7,11 @@ Hello name() >
 Hello << name()
 Hello ^name()
 Hello @name()
+Hello name<arg1, arg2>
+Hello t:name()
+Hello x:name()
+Hello >:name()
 ```
-
-* rebase with new pattern
 
 * Syntax
 * Samples

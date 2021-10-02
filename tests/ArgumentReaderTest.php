@@ -15,10 +15,11 @@ class ArgumentReaderTest extends BaseTest
 	 */
 	public function test(): void
 	{
-		$pattern = new ExpressionPattern;
 		$reader = new ArgumentReader(
 			'7|8',
-			$pattern
+			new ExpressionPattern(
+				argumentSeparator: '|'
+			)
 		);
 
 		$this->assertEquals(7, $reader->get(0));
@@ -30,10 +31,11 @@ class ArgumentReaderTest extends BaseTest
 	 */
 	public function mix(): void
 	{
-		$pattern = new ExpressionPattern(argumentSeparator: ',');
 		$reader = new ArgumentReader(
 			'1, "hello"',
-			$pattern
+			new ExpressionPattern(
+				argumentSeparator: ','
+			)
 		);
 
 		$this->assertEquals('1', $reader->get(0));
@@ -45,10 +47,12 @@ class ArgumentReaderTest extends BaseTest
 	 */
 	public function quoted(): void
 	{
-		$pattern = new ExpressionPattern(argumentSeparator: ',');
 		$reader = new ArgumentReader(
 			'"7,", "8,"',
-			$pattern
+			new ExpressionPattern(
+				argumentSeparator: ',',
+				argumentQuotes: ['"']
+			)
 		);
 
 		$this->assertEquals(
@@ -67,7 +71,9 @@ class ArgumentReaderTest extends BaseTest
 	 */
 	public function trimming(): void
 	{
-		$pattern = new ExpressionPattern;
+		$pattern = new ExpressionPattern(
+			argumentSeparator: '|'
+		);
 		$reader = new ArgumentReader(
 			'   7   |  8 ',
 			$pattern
@@ -82,10 +88,12 @@ class ArgumentReaderTest extends BaseTest
 	 */
 	public function trimAndQuotes(): void
 	{
-		$pattern = new ExpressionPattern;
 		$reader = new ArgumentReader(
 			'   "7"  |  "7 "   |  " 8 " ',
-			$pattern
+			new ExpressionPattern(
+				argumentSeparator: '|',
+				argumentQuotes: ['"']
+			)
 		);
 
 		$this->assertEquals(7, $reader->get(0));
@@ -98,10 +106,12 @@ class ArgumentReaderTest extends BaseTest
 	 */
 	public function combinationOfQuotes(): void
 	{
-		$pattern = new ExpressionPattern;
 		$reader = new ArgumentReader(
 			'   " 6 "  |  7    |  \' 99 \' ',
-			$pattern
+			new ExpressionPattern(
+				argumentSeparator: '|',
+				argumentQuotes: ['"', '\'']
+			)
 		);
 
 		$this->assertEquals(' 6 ', $reader->get(0));
@@ -114,10 +124,12 @@ class ArgumentReaderTest extends BaseTest
 	 */
 	public function altQuotes(): void
 	{
-		$pattern = new ExpressionPattern(argumentQuotes: ['X', '*', 'Z']);
 		$reader = new ArgumentReader(
 			'   X 6 X  |  7    |  * 99 * ',
-			$pattern
+			new ExpressionPattern(
+				argumentSeparator: '|',
+				argumentQuotes: ['X', '*', 'Z']
+			)
 		);
 
 		$this->assertEquals(' 6 ', $reader->get(0));

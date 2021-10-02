@@ -7,8 +7,6 @@ use Markhj\Text\Text;
 
 class InitTest extends BaseTest
 {
-	protected $legacy = true;
-	
 	/**
 	 * @test
 	 * @return void
@@ -34,6 +32,23 @@ class InitTest extends BaseTest
 		$this->assertEquals(
 			'Hello world',
 			(string) $text
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function defaultPattern(): void
+	{
+		$text = new Text('Hello x:name()!');
+
+		$text->on('name')->do(function() {
+			return 'world';
+		});
+
+		$this->assertEquals(
+			'Hello world!',
+			$text->parse()
 		);
 	}
 }
