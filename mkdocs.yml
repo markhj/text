@@ -3,6 +3,21 @@ theme:
   name: material
 nav:
   - 'Home': 'index.md'
+  - 'Basics':
+    - 'Text': 'text.md'
+    - 'Text from file': 'textfromfile.md'
+    - 'Revise': 'decoration.md'
+    - 'Parser': 'parserbasics.md'
+  - 'Data maps':
+    - 'Data maps': 'datamaps.md'
+    - 'Static maps': 'staticdatamaps.md'
+    - 'Global maps': 'globaldatamaps.md'
+  - 'Parsers':
+    - 'Custom parser': 'customparser.md'
+    - 'Global parsers': 'globalparser.md'
+  - 'Expression patterns':
+    - 'Custom pattern': 'custompattern.md'
+    - 'Convert pattern': 'convertpattern.md'
   - 'Cursor':
     - 'Cursor basics': 'cursor.md'
     - 'Slicing': 'slicing.md'
