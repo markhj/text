@@ -8,6 +8,7 @@ nav:
     - 'Text from file': 'textfromfile.md'
     - 'Revise': 'decoration.md'
     - 'Parser': 'parserbasics.md'
+    - 'Repository': 'repository.md'
   - 'Data maps':
     - 'Data maps': 'datamaps.md'
     - 'Static maps': 'staticdatamaps.md'
