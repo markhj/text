@@ -1,5 +1,5 @@
 # Cursor
-The ````Cursor```` object is used to conveniently read and extract from strings in a more structured and beautiful fashion.
+The ````Cursor```` object is used to read and extract from strings in a more structured and beautiful fashion.
 
 The Cursor object is designed to operate completely without any independence on ````Text````.
 

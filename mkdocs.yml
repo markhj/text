@@ -20,5 +20,5 @@ nav:
     - 'Custom pattern': 'custompattern.md'
     - 'Convert pattern': 'convertpattern.md'
   - 'Cursor':
-    - 'Cursor basics': 'cursor.md'
-    - 'Slicing': 'slicing.md'
+    - 'Cursor basics': 'cursor/cursor.md'
+    - 'Slicing': 'cursor/slicing.md'
