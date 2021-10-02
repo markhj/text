@@ -8,23 +8,8 @@ The library additionally requires mbstring extension.
 composer require markhj/text
 ```
 
-# Samples
-We have samples 
+# Documentation
+Please see documentation at:
+https://markhjtext.readthedocs.io/en/latest/
 
-# Usage
-Please refer to the ````docs```` folder for more detailed documentation.
-
-# Getting started
-
-## Cursor
-The ````Cursor```` library is technically a more primitive class which was introduced to ease the creation of the ````Text```` object, but it was decided to also make this class readily available. This object makes it an intuitive breeze to read, search and manipulate strings by numeric positions.
-
-```php
-$cursor = new Text(new Cursor('Hello world'));
-
-// Adding to a string
-$cursor->move(5)->insert('wonderful '); 	// Hello wonderful world
-
-// Getting a part of the string
-$cursor->toEnd()->move(-5)->selection(); 	// "world"
-```
+You can also explore the ``samples`` directory.
