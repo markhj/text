@@ -16,7 +16,10 @@ class ArgumentParsingTest extends BaseTest
 	 */
 	public function trim(): void
 	{
-		$fragments = (new Tokenizer)->tokenize('Hello #w[1   | 2 ]');
+		$fragments = (new Tokenizer)->tokenize(
+			'Hello #w[1   | 2 ]',
+			$this->basicPattern()
+		);
 
 		$this->assertEquals('1', $fragments->get(1)->arguments()->get(0));
 		$this->assertEquals('2', $fragments->get(1)->arguments()->get(1));
@@ -27,10 +30,8 @@ class ArgumentParsingTest extends BaseTest
 	 */
 	public function quoted(): void
 	{
-		$pattern = new ExpressionPattern(
-			argumentSeparator: ','
-		);
-		$fragments = (new Tokenizer)->tokenize('Hello #w[1, "hello"]', $pattern);
+		$pattern = $this->basicPattern();
+		$fragments = (new Tokenizer)->tokenize('Hello #w[1| "hello"]', $pattern);
 
 		$this->assertEquals('1', $fragments->get(1)->arguments()->get(0));
 		$this->assertEquals('hello', $fragments->get(1)->arguments()->get(1));
@@ -41,10 +42,9 @@ class ArgumentParsingTest extends BaseTest
 	 */
 	public function differentQuoteChars(): void
 	{
-		$pattern = new ExpressionPattern(
-			argumentSeparator: ','
-		);
-		$fragments = (new Tokenizer)->tokenize('Hello #w[\'1\', "hello"]', $pattern);
+		
+		$pattern = $this->basicPattern();
+		$fragments = (new Tokenizer)->tokenize('Hello #w[\'1\'| "hello"]', $pattern);
 
 		$this->assertEquals('1', $fragments->get(1)->arguments()->get(0));
 		$this->assertEquals('hello', $fragments->get(1)->arguments()->get(1));
@@ -56,6 +56,10 @@ class ArgumentParsingTest extends BaseTest
 	public function altQuoteChars(): void
 	{
 		$pattern = new ExpressionPattern(
+			prefix: '#',
+			suffix: '',
+			arguments: '[]',
+			end: '',
 			argumentSeparator: ',',
 			argumentQuotes: ['X']
 

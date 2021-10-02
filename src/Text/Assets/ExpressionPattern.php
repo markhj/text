@@ -7,7 +7,7 @@ use Markhj\Text\Exceptions\InvalidExpressionPatternException;
 class ExpressionPattern
 {
 	public function __construct(
-		protected string $prefix = '#',
+		protected string $prefix = '*',
 		protected string $suffix = '',
 		protected string $arguments = '[]',
 		protected string $argumentSeparator = '|',

@@ -6,7 +6,7 @@ use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Assets\ExpressionPattern;
 
-class RebaseForTest extends BaseTest
+class TransformTest extends BaseTest
 {
 	/**
 	 * @test
@@ -39,7 +39,7 @@ class RebaseForTest extends BaseTest
 			$text->parse()
 		);
 
-		$text->rebaseFor($new);
+		$text->transform($new);
 
 		$this->assertEquals(
 			'Hello << world() >>!',
@@ -75,7 +75,7 @@ class RebaseForTest extends BaseTest
 			return $args->get(0) . ' ' . $args->get(1);
 		});
 
-		$text->rebaseFor($new);
+		$text->transform($new);
 
 		$this->assertEquals(
 			'Hello << world("John", "Doe") >>!',

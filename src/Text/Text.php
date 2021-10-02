@@ -287,7 +287,7 @@ class Text implements RegistersUse
 		return new Decoration($this);
 	}
 
-	public function rebaseFor(
+	public function transform(
 		ExpressionPattern $pattern
 	): Text
 	{

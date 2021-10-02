@@ -17,7 +17,7 @@ class TokenizerTest extends BaseTest
 	public function test(): void
 	{
 		$string = 'Hello #w[] World';
-		$tokens = (new Tokenizer)->tokenize($string);
+		$tokens = (new Tokenizer)->tokenize($string, $this->basicPattern());
 
 		$this->assertCount(3, $tokens);
 		$this->assertFalse($tokens->get(0)->isExpression());
@@ -41,7 +41,7 @@ class TokenizerTest extends BaseTest
 	public function advanced(): void
 	{
 		$string = '#w[] More advanced #g[hello] #y[]#x[] example to try with #t[]';
-		$tokens = (new Tokenizer)->tokenize($string);
+		$tokens = (new Tokenizer)->tokenize($string, $this->basicPattern());
 
 		$this->assertCount(9, $tokens);
 		
