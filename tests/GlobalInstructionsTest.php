@@ -1,13 +1,16 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
+use Markhj\Text\Assets\ExpressionPattern;
 use Markhj\Text\Tests\Parsers\GlobalParser;
-use PHPUnit\Framework\TestCase;
 
-class GlobalInstructionsTest extends TestCase
+class GlobalInstructionsTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void
@@ -48,6 +51,29 @@ class GlobalInstructionsTest extends TestCase
 		$this->assertEquals(
 			'Hello Custom Global!',
 			(new Text('Hello #gblcustom[]!'))->parse()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function expressionPattern(): void
+	{
+		Text::global()->setExpressionPattern(
+			new ExpressionPattern(
+				prefix: '*'
+			)
+		);
+
+		$text = new Text('Hello #gbl[] *gbl[]!');
+
+		$text->on('gbl')->do(function() {
+			return 'Global';
+		});
+
+		$this->assertEquals(
+			'Hello #gbl[] Global!',
+			$text->parse()
 		);
 	}
 }

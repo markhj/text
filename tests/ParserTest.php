@@ -1,16 +1,18 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Parsers\PrintVariable;
 use Markhj\Text\DataMap\EmptyDataMap;
 use Markhj\Text\Exceptions\MissingExpressionNameException;
 use Markhj\Text\Tests\Parsers\ParserWithoutDefaultName;
-use PHPUnit\Framework\TestCase;
 
-class ParserTest extends TestCase
+class ParserTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * Here we test that the default injection of parsers
 	 * worked

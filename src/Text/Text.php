@@ -9,6 +9,7 @@ use Markhj\Text\Assets\Fragments\Fragment;
 use Markhj\Text\Assets\Collections\UseCollection;
 use Markhj\Text\Assets\Instruction;
 use Markhj\Text\Assets\ExpressionPattern;
+use Markhj\Text\Assets\ExpressionSignatureConverter;
 use Markhj\Text\Assets\FragmentCollection;
 use Markhj\Text\Assets\Repository;
 use Markhj\Text\Assets\TextGlobal;
@@ -63,6 +64,8 @@ class Text implements RegistersUse
 	protected function applyGlobal(): void
 	{
 		$this->repository()->merge($this->global()->repository());
+
+		$this->expressionPattern = $this->global()->expressionPattern();
 
 		foreach ($this->global()->instructions() as $instruction) {
 			$this
@@ -282,5 +285,24 @@ class Text implements RegistersUse
 	public function revise(): Decoration
 	{
 		return new Decoration($this);
+	}
+
+	public function rebaseFor(
+		ExpressionPattern $pattern
+	): Text
+	{
+		$this->rebase(function(Fragment $fragment) use($pattern) {
+			$expression = $fragment->expression();
+
+			if ($expression) {
+				$fragment->rebase(
+					(new ExpressionSignatureConverter($expression, $pattern))->instance()
+				);
+			}
+
+			return $fragment;
+		});
+
+		return $this->setExpressionPattern($pattern);
 	}
 }

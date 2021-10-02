@@ -8,6 +8,13 @@ class TextFragment extends Fragment
 		protected string $text
 	) { }
 
+	public function rebase($foundation): Fragment
+	{
+		$this->text = $foundation;
+
+		return $this;
+	}
+
 	public function foundation(): string
 	{
 		return $this->text;

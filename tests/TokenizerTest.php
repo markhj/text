@@ -1,13 +1,15 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Tokenizer;
-use PHPUnit\Framework\TestCase;
 
-class TokenizerTest extends TestCase
+class TokenizerTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

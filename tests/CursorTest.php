@@ -1,16 +1,18 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Cursor;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @todo Trimming instructions on slicing
  */
-class CursorTest extends TestCase
+class CursorTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

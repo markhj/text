@@ -1,13 +1,15 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Cursor;
 use Markhj\Text\Exceptions\LoopProtectionException;
-use PHPUnit\Framework\TestCase;
 
-class CursorWhileTest extends TestCase
+class CursorWhileTest extends BaseTest
 {
+    protected $legacy = true;
+    
     /**
      * @test
      */

@@ -1,14 +1,16 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Assets\ExpressionPattern;
 use Markhj\Text\Assets\Fragments\Fragment;
-use PHPUnit\Framework\TestCase;
 
-class ForEachTest extends TestCase
+class ForEachTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

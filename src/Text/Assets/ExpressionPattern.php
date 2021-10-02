@@ -62,6 +62,26 @@ class ExpressionPattern
 		return $this->toRegExp();
 	}
 
+	public function prefix(): string
+	{
+		return $this->prefix;
+	}
+
+	public function suffix(): string
+	{
+		return $this->suffix;
+	}
+
+	public function arguments(): string
+	{
+		return $this->arguments;
+	}
+
+	public function end(): string
+	{
+		return $this->end;
+	}
+
 	public function argumentQuotes(): array
 	{
 		return $this->argumentQuotes;

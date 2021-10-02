@@ -1,14 +1,16 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\DataContainer;
 use Markhj\Text\Tests\DataMaps\BasicDataMap;
-use PHPUnit\Framework\TestCase;
 
-class DataTest extends TestCase
+class DataTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

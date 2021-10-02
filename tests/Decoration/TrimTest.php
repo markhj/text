@@ -1,12 +1,14 @@
 <?php
 
-namespace Markhj\Text\Test\Decoration;
+namespace Markhj\Text\Tests\Decoration;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
-use PHPUnit\Framework\TestCase;
 
-class TrimTest extends TestCase
+class TrimTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

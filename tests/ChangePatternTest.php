@@ -1,13 +1,15 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Assets\ExpressionPattern;
-use PHPUnit\Framework\TestCase;
 
-class ChangePatternTest extends TestCase
+class ChangePatternTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

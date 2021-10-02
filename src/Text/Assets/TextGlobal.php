@@ -5,6 +5,7 @@ namespace Markhj\Text\Assets;
 use Markhj\Text\Assets\Repository;
 use Markhj\Text\Assets\UseToInstruction;
 use Markhj\Text\Assets\Instruction;
+use Markhj\Text\Assets\ExpressionPattern;
 use Markhj\Text\Contracts\RegistersUse;
 use Markhj\Collection\Collection;
 
@@ -12,6 +13,7 @@ class TextGlobal implements RegistersUse
 {
 	protected static Repository $repository;
 	protected static ?Collection $instructions = null;
+	protected static ?ExpressionPattern $expressionPattern = null;
 	protected ?string $index;
 
 	public function repository(): Repository
@@ -21,6 +23,20 @@ class TextGlobal implements RegistersUse
 		}
 
 		return self::$repository;
+	}
+
+	public function setExpressionPattern(
+		?ExpressionPattern $pattern
+	): TextGlobal
+	{
+		self::$expressionPattern = $pattern;
+
+		return $this;
+	}
+
+	public function expressionPattern(): ExpressionPattern
+	{
+		return self::$expressionPattern ?? new ExpressionPattern;
 	}
 
 	public function use(

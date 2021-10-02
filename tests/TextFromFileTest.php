@@ -1,12 +1,14 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\TextFromFile;
-use PHPUnit\Framework\TestCase;
 
-class TextFromFileTest extends TestCase
+class TextFromFileTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

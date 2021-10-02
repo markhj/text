@@ -15,6 +15,13 @@ class ExpressionFragment extends Fragment
 		$this->expression = $expression;
 	}
 
+	public function rebase($foundation): Fragment
+	{
+		$this->expression = $foundation;
+
+		return $this;
+	}
+
 	public function foundation(): string
 	{
 		return $this->expression->signature();

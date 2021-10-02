@@ -1,17 +1,19 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Expression;
 use Markhj\Text\Assets\ExpressionPattern;
 use Markhj\Text\Assets\Fragments\Fragment;
 use Markhj\Text\Assets\Fragments\ExpressionFragment;
 use Markhj\Text\Assets\Fragments\TextFragment;
-use PHPUnit\Framework\TestCase;
 
-class MissingParserTest extends TestCase
+class MissingParserTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

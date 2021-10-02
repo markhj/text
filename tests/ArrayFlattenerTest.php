@@ -1,12 +1,14 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Assets\ArrayFlattener;
-use PHPUnit\Framework\TestCase;
 
-class ArrayFlattenerTest extends TestCase
+class ArrayFlattenerTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

@@ -1,7 +1,8 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\DataContainer;
 use Markhj\Text\Tests\DataMaps\BasicDataMap;
@@ -10,10 +11,11 @@ use Markhj\Text\Tests\DataMaps\ConstructorDataMap;
 use Markhj\Text\DataMap\EmptyDataMap;
 use Markhj\Text\Exceptions\InvalidNamespaceException;
 use Markhj\Text\Exceptions\InvalidDataMapKeyException;
-use PHPUnit\Framework\TestCase;
 
-class DataApplicationTest extends TestCase
+class DataApplicationTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void

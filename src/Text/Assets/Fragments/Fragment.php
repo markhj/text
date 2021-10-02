@@ -9,6 +9,7 @@ abstract class Fragment
 	protected ?Expression $expression = null;
 
 	abstract public function foundation(): string;
+	abstract public function rebase($foundation): Fragment;
 	abstract public function get();
 	abstract public function set($value): Fragment;
 

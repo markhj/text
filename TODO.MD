@@ -1,5 +1,16 @@
 # To do
 
+```
+Hello name()*
+Hello name() >>
+Hello name() >
+Hello << name()
+Hello ^name()
+Hello @name()
+```
+
+* rebase with new pattern
+
 * Syntax
 * Samples
 
@@ -7,6 +18,8 @@
 * Multiple parsers #pluralize|ucfirst[some word]
 
 # Roadmap
+* replace (normal + regexp)
+* get matches (regexp)
 * Conditions (if/else)
 * Loops
 * Traverse on pattern (forEach, map, rebase)

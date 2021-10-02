@@ -1,14 +1,16 @@
 <?php
 
-namespace Markhj\Text\Test;
+namespace Markhj\Text\Tests;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Tokenizer;
 use Markhj\Text\Text;
 use Markhj\Text\Assets\ExpressionPattern;
-use PHPUnit\Framework\TestCase;
 
-class ArgumentParsingTest extends TestCase
+class ArgumentParsingTest extends BaseTest
 {
+	protected $legacy = true;
+
 	/**
 	 * @test
 	 */

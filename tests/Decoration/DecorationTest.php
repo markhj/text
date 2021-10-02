@@ -1,14 +1,16 @@
 <?php
 
-namespace Markhj\Text\Test\Decoration;
+namespace Markhj\Text\Tests\Decoration;
 
+use Markhj\Text\Tests\BaseTest;
 use Markhj\Text\Text;
 use Markhj\Text\Tests\DataMaps\BasicDataMap;
 use Markhj\Text\Exceptions\StringNotValidForOperationException;
-use PHPUnit\Framework\TestCase;
 
-class DecorationTest extends TestCase
+class DecorationTest extends BaseTest
 {
+	protected $legacy = true;
+	
 	/**
 	 * @test
 	 * @return void
