@@ -2,5 +2,5 @@ site_name: markhj/text
 theme:
   name: material
 nav:
-  - 'index.md'
-  - 'cursor.md'
+  - Home: 'index.md'
+  - Cursor: 'cursor.md'
