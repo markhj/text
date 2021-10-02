@@ -2,5 +2,7 @@ site_name: markhj/text
 theme:
   name: material
 nav:
-  - Home: 'index.md'
-  - Cursor: 'cursor.md'
+  - 'Home': 'index.md'
+  - 'Cursor':
+    - 'Cursor basics': 'cursor.md'
+    - 'Slicing': 'slicing.md'
