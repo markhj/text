@@ -4,21 +4,21 @@ theme:
 nav:
   - 'Home': 'index.md'
   - 'Basics':
-    - 'Text': 'text.md'
-    - 'Text from file': 'textfromfile.md'
-    - 'Revise': 'decoration.md'
-    - 'Parser': 'parserbasics.md'
-    - 'Repository': 'repository.md'
+    - 'Text': 'text/basics.md'
+    - 'Text from file': 'text/textfromfile.md'
+    - 'Revise': 'text/decoration.md'
+    - 'Parser': 'text/parserbasics.md'
+    - 'Repository': 'text/repository.md'
   - 'Data maps':
-    - 'Data maps': 'datamaps.md'
-    - 'Static maps': 'staticdatamaps.md'
-    - 'Global maps': 'globaldatamaps.md'
+    - 'Data maps': 'datamaps/datamaps.md'
+    - 'Static maps': 'datamaps/static-datamaps.md'
+    - 'Global maps': 'datamaps/global-datamaps.md'
   - 'Parsers':
-    - 'Custom parser': 'customparser.md'
-    - 'Global parsers': 'globalparser.md'
+    - 'Custom parser': 'parsers/custom-parser.md'
+    - 'Global parsers': 'parsers/global-parser.md'
   - 'Expression patterns':
-    - 'Custom pattern': 'custompattern.md'
-    - 'Convert pattern': 'convertpattern.md'
+    - 'Custom pattern': 'expression-patterns/custompattern.md'
+    - 'Convert pattern': 'expression-patterns/convertpattern.md'
   - 'Cursor':
-    - 'Cursor basics': 'cursor/cursor.md'
+    - 'Cursor basics': 'cursor/basics.md'
     - 'Slicing': 'cursor/slicing.md'
