@@ -3,7 +3,9 @@
 * GLOBAL: "use"
 * GLOBAL: instructions
 
-* Improve ArgumentReader
+```php
+
+```
 
 ## Finishing
 * Syntax
@@ -21,14 +23,9 @@
 * Organize tests better
 * Ensure everything is covered in test
 * Cursor::toNext behavior when not found
+* Behavior of studly/camel/snakecase when not found
 
-# Revised utils
-```php
-$text->decorate()->camelcase(); 	// Do on object itself
-$text->getAs()->camelcase(); 		// Get a copy
 
-public function getAs(): TextUtils; 		// But better name for TextUtils
-```
 
 # Pluralization
 

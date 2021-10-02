@@ -8,55 +8,100 @@ use Markhj\Collection\AssociativeCollection;
 
 class ArgumentReader extends AssociativeCollection
 {
+	const CONTEXT_COLLECTING = 0x1;
+	const CONTEXT_PENDING_SEPARATOR = 0x2;
+
+	protected Cursor $argCursor;
+	protected string $cache;
+	protected ?string $context;
+
 	public function __construct(
 		protected string $string,
 		protected ExpressionPattern $pattern
 	) {
-		$this->explode($string);
+		$this->argCursor = new Cursor($this->string);
+
+		$this->explode();
 	}
 
 	protected function explode(): void
 	{
-		$cursor = new Cursor($this->string);
-		$context = null;
-		$cache = '';
-		$i = 0;
+		$this->nextArgument();
 
-		$cursor->while(function(Cursor $cursor) use(&$cache, &$i, &$context) {
-			$char = $cursor->char();
-			$isQuote = in_array($char, $this->pattern->argumentQuotes());
-			$separator = $this->pattern->argumentSeparator();
-
-			if (
-				(!$context || $context == 'collecting')
-				// && !$isQuote
-				&& (
-					$char != $separator
-					|| ($char == $separator && $context == 'collecting')
-				)
-			) {
-				$cache .= $cursor->char();
-			}
-
-			if (!$context && $isQuote) {
-				$context = 'collecting';
-			} else if ($context == 'collecting' && $isQuote) {
-				$context = 'pending_separator';
-			}
-			
-			if (
-				($context != 'collecting' && $char == $separator)
-				|| ($cursor->position() + 1 == mb_strlen($cursor->get()))
-			) {
-				$this->set($i, $this->trim($cache));
-
-				$i++;
-				$cache = '';
-				$context = null;
-			}
-
-			$cursor->next();
+		$this->argCursor->while(function(Cursor $cursor) {
+			$this->handleIteration();
 		});
+	}
+
+	protected function handleIteration(): void
+	{
+		$char = $this->argCursor->char();
+
+		$this->addToCache();
+		$this->modifyContext();
+		
+		if ($this->shouldAddArgument()) {
+			$this->set(
+				$this->count(),
+				$this->trim($this->cache)
+			);
+			$this->nextArgument();
+		}
+
+		$this->argCursor->next();
+	}
+
+	protected function shouldAddArgument(): bool
+	{
+		$char = $this->argCursor->char();
+		$separator = $this->pattern->argumentSeparator();
+
+		if ($this->context != self::CONTEXT_COLLECTING && $char == $separator) {
+			return true;
+		}
+
+		if ($this->argCursor->position() + 1 == mb_strlen($this->argCursor->get())) {
+			return true;
+		}
+
+		return false;
+	}
+
+	protected function nextArgument(): void
+	{
+		$this->cache = '';
+		$this->context = null;
+	}
+
+	protected function modifyContext(): void
+	{
+		$isQuote = in_array(
+			$this->argCursor->char(),
+			$this->pattern->argumentQuotes()
+		);
+
+		if (!$this->context && $isQuote) {
+			$this->context = self::CONTEXT_COLLECTING;
+		} else if ($this->context == self::CONTEXT_COLLECTING && $isQuote) {
+			$this->context = self::CONTEXT_PENDING_SEPARATOR;
+		}
+	}
+
+	protected function addToCache(): void
+	{
+		$separator = $this->pattern->argumentSeparator();
+		$char = $this->argCursor->char();
+
+		if (
+			(!$this->context || $this->context == self::CONTEXT_COLLECTING)
+			&& 
+			(
+				$char != $separator
+				|| ($char == $separator && $this->context == self::CONTEXT_COLLECTING)
+			)
+		) {
+			$this->cache .= $this->argCursor->char();
+		}
 	}
 
 	public function getArgumentQuote(string $argument): ?string
