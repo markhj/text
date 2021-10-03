@@ -1,6 +1,6 @@
 <?php
 
-namespace Markhj\Text\Attributes\DataMap;
+namespace Markhj\Text\Attributes\Parser;
 
 use Attribute;
 

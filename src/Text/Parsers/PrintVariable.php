@@ -4,7 +4,7 @@ namespace Markhj\Text\Parsers;
 
 use Markhj\Text\Assets\Fragments\Fragment;
 use Markhj\Text\Assets\Repository;
-use Markhj\Text\Attributes\DataMap\DefaultParserName;
+use Markhj\Text\Attributes\Parser\DefaultParserName;
 
 #[DefaultParserName('p')]
 class PrintVariable extends Parser

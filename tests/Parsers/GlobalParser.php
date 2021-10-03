@@ -5,7 +5,7 @@ namespace Markhj\Text\Tests\Parsers;
 use Markhj\Text\Assets\Fragments\Fragment;
 use Markhj\Text\Assets\Repository;
 use Markhj\Text\Parsers\Parser;
-use Markhj\Text\Attributes\DataMap\DefaultParserName;
+use Markhj\Text\Attributes\Parser\DefaultParserName;
 
 #[DefaultParserName('global')]
 class GlobalParser extends Parser

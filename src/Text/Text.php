@@ -16,7 +16,7 @@ use Markhj\Text\Assets\TextGlobal;
 use Markhj\Text\Assets\UseToInstruction;
 use Markhj\Text\Parsers\Parser;
 use Markhj\Text\Parsers\PrintVariable;
-use Markhj\Text\Attributes\DataMap\DefaultParserName;
+use Markhj\Text\Attributes\Parser\DefaultParserName;
 use Markhj\Text\Traits\HandlesInstructions;
 use Markhj\Text\Contracts\RegistersUse;
 use ReflectionClass;

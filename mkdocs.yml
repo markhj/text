@@ -4,27 +4,35 @@ theme:
 nav:
   - 'Home': 'index.md'
   - 'Basics':
-    - 'Text': 'text/basics.md'
+    - 'Getting started': 'text/basics.md'
     - 'Text from file': 'text/textfromfile.md'
-    - 'Iterators': 'text/iterators.md'
     - 'Revise': 'text/decoration.md'
-    - 'Parser': 'text/parserbasics.md'
-  - 'Data maps':
-    - 'Data maps': 'datamaps/datamaps.md'
+    - 'Getters': 'text/getters.md'
+  - 'Iterators':
+    - 'ForEach': 'iterators/foreach.md'
+    - 'Map': 'iterators/map.md'
+    - 'Rebase': 'iterators/rebase.md'
+    - 'Differences': 'iterators/differences.md'
+  - 'Data':
+    - 'Basics': 'data/data.md'
+    - 'Data maps': 'data/datamaps.md'
     - 'Repository': 'text/repository.md'
-    - 'Namespaces': 'datamaps/namespaces.md'
-    - 'Static maps': 'datamaps/static-datamaps.md'
-    - 'Global maps': 'datamaps/global-datamaps.md'
+    - 'Namespaces': 'data/namespaces.md'
+    - 'Static maps': 'data/static-datamaps.md'
+    - 'Global maps': 'data/global-datamaps.md'
   - 'Parsers':
-    - 'Basics': 'parsers/parser-basics.md'
+    - 'Basics': 'text/parserbasics.md'
     - 'Native parsers': 'parsers/native-parsers.md'
     - 'Parser class': 'parsers/custom-parser.md'
     - 'Global parsers': 'parsers/global-parser.md'
-  - 'Expression patterns':
-    - 'Custom pattern': 'expression-patterns/custompattern.md'
-    - 'Convert pattern': 'expression-patterns/convertpattern.md'
   - 'Cursor':
-    - 'Cursor basics': 'cursor/basics.md'
+    - 'Getting started': 'cursor/basics.md'
+    - 'Navigation': 'cursor/navigation.md'
+    - 'Selection': 'cursor/selection.md'
+    - 'Manipulation': 'cursor/manipulation.md'
     - 'Slicing': 'cursor/slicing.md'
   - 'Advanced concepts':
       'Fragments': 'advanced/fragments.md'
+      'Expression patterns':
+        - 'Custom pattern': 'expression-patterns/custompattern.md'
+        - 'Convert pattern': 'expression-patterns/convertpattern.md'

@@ -4,7 +4,7 @@ namespace Markhj\Text\Assets;
 
 use Markhj\Text\Assets\Instruction;
 use Markhj\Text\Parsers\Parser;
-use Markhj\Text\Attributes\DataMap\DefaultParserName;
+use Markhj\Text\Attributes\Parser\DefaultParserName;
 use Markhj\Text\Exceptions\MissingExpressionNameException;
 use Markhj\Text\Exceptions\IndexNotSelectedException;
 use ReflectionClass;
