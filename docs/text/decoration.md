@@ -21,7 +21,7 @@ if ($text->clone()->revise()->trim() == '...') {
 ```
 
 ## Methods
-### crop
+## crop
 `public function crop(int $from, int $length): Decoration`
 
 

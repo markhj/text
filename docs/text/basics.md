@@ -1,45 +1,34 @@
 # Text
 
 ## Basic use
+You initiate an instance of `Markhj\Text\Text` containing the string you want to work on. The string can be short or long, it's up to you.
 
-(string)
-->parse()
-
-## Basic manipulations
-Carry out manipulations on the current `Text` instance itself.
 ```php
-public function crop(int $from, int $length): Text;
-public function trim(string $char = ' '): Text;
-public function leftTrim(string $char = ' '): Text;
-public function rightTrim(string $char = ' '): Text;
+use Markhj\Text\Text;
 
+$text = new Text('Hello world');
 ```
 
-### Basic manipulations (in new instance)
-Carry out a manipulation and provide it in a new object instance (i.e. the action has no effect on the called `Text` instance itself.)
+## Parsing
+In the above we example we haven't done any manipulation to the string. We'll cover that later. But once you've changed the string and want to retrieve it, you use `Text::parse` or typecast as string.
+
+### *parse* method
 ```php
-public function substr(int $offset, ?int $length = null): Text;
+$text = new Text('Hello world');
+
+$text->parse(); // Hello world
 ```
 
-## Basic getters
+### Typecast
 ```php
-public function length(): int;
-public function byteSize(): int;
+$text = new Text('Hello world');
+
+(string) $text; // Hello world
 ```
 
-## Iterators
-### Understanding the differences
-The `Text` object offers three different types of iterators functioning ever so slightly from each other.
+## Template
+The string you constructed the `Text` object with is refered to as the `template`. It's also possible to change the template itself. To retrieve the template use `Text::template` method.
 
-The `forEach` method will loop over the fragments, but you cannot modify them. This is meant purely as a convenient way to loop over the expressions and read relevant information about them.
-
-The `map` will replace the expression and parse the output. This means that you have to use the `set` method to define an output for the ExpressionFragment. You can also return a `TextFragment` to replace it.
-
-The `rebase` method works very similar to `map` but instead of replacing expressions with the output, it will replace with the `foundation` method of the fragment. For `TextFragment` this behaves the normal way, but for `ExpressionFragment` it will insert the signature of the expression, instead of the result/output. This allows you to replace expressions before they're parsed.
-
-## forEach
-## map
-## rebase
-Modify the expression signatures.
-
-Return new ExpressionFragment, or replace with another type of fragment.
+```php
+$text->template(); // HelloWorld
+```

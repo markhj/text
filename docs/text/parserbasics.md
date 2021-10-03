@@ -13,7 +13,7 @@ $text->on('name')->do(function($fragment, $repository) {
 var_dump($text->parse()); // Hello John Doe. How are you?
 ```
 
-This will output the return of the function where name is.
+This will output the return value of the function where `name:()` is.
 
 In this text the part `name:()` is known as the **expression**. When the text is interpreted it is broken down to **fragments**. A fragment is either plain text or an expression.
 
@@ -35,9 +35,10 @@ Of course, depending on when you read this the example may have outdated, but yo
 
 ## Work with data
 
-We strongly recommend taking a look at data maps as they will structure and improve on this behavior.
+Data is provided to parsers through [repositories](/text/repository), where you either set key/value pairs or
+inject [data maps](/data/data).
 
-You can add data for use in the parser using:
+You can add data for the parser using:
 ```php
 $text->repository()->set('customer.name', 'John Doe');
 ```
@@ -55,6 +56,6 @@ $text->repository()->set('customer.name', 'John Doe');
 var_dump($text->parse()); // Hello John Doe. How are you?
 ```
 
-## Learn more
-
-Please read the more detailed documentation to learn about you work with fragments, repositories, arguments, expressions and much more.
+## See also
+* [Introduction to data](/data/data)
+* [Fragments](/advanced/fragments)

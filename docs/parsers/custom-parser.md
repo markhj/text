@@ -9,7 +9,7 @@ A bare minimum parser class looks like this:
 use Markhj\Text\Parsers\Parser;
 use Markhj\Text\Assets\Repository;
 use Markhj\Text\Assets\Fragments\Fragment;
-use Markhj\Text\Attributes\DataMap\DefaultParserName;
+use Markhj\Text\Attributes\Parser\DefaultParserName;
 
 #[DefaultParserName('custom')]
 class MyCustomParser extends Parser
