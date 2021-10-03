@@ -2,7 +2,6 @@
     "name": "markhj/text",
     "description": "A compact and efficient text parser for PHP 8.0+",
     "type": "library",
-    "license": "Proprietary",
     "autoload": {
         "psr-4": {
             "Markhj\\Text\\": "src/Text"
