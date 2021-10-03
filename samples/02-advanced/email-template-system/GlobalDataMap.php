@@ -5,7 +5,7 @@ use Markhj\Text\Attributes\DataMap\DataMapKey;
 
 class GlobalDataMap extends DataMap
 {
-	#[DataMapKey('currency')]
+	#[DataMapKey]
 	public function currency(): string
 	{
 		return 'DKK';

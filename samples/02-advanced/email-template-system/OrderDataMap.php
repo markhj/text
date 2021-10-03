@@ -7,11 +7,13 @@ class OrderDataMap extends DataMap
 {
 	public function __construct(
 		protected StdClass $order
-	) { }
+	) {
+		parent::__construct();
+	}
 
-	#[DataMapKey('currency')]
+	#[DataMapKey]
 	public function total(): string
 	{
-		return $this->order->totalAmount;
+		return number_format($this->order->totalAmount, 2);
 	}
 }

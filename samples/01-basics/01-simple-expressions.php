@@ -11,7 +11,7 @@ use Markhj\Text\DataMap\EmptyDataMap;
 
 title('Basic string manipulation');
 
-$text = new Text('Hello #w[]!');
+$text = new Text('Hello w:()!');
 
 // Note how the same expression can be operated on multiple times,
 // but also with multiple instructions
@@ -32,7 +32,7 @@ text($text);
 
 title('Playing with numbers');
 
-$text = new Text('Some numbers would be #multiply[5|2], #multiply[7|4] and finally #add[10|5]. A random number would be #rand[]!');
+$text = new Text('Some numbers would be multiply:(5,2), multiply:(7,4) and finally add:(10,5). A random number would be rand:()!');
 
 $text->on('multiply')->do(function($fragment) {
 	$args = $fragment->arguments();
@@ -58,7 +58,7 @@ text($text);
 
 title('Another example');
 
-$text = new Text('Their email is #email[name@example.com] or #email[not-an-email]');
+$text = new Text('Their email is email:(name@example.com) or email:(not-an-email)');
 
 $text->on('email')->do(function($fragment) {
 	$email = $fragment->arguments()->get(0);

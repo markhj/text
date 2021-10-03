@@ -6,16 +6,15 @@ require __DIR__ . '/GlobalDataMap.php';
 require __DIR__ . '/OrderDataMap.php';
 
 use Markhj\Text\TextFromFile;
-use Markhj\Text\Text;
 
-title('Complex example: Creating a general email parser');
+title('Advanced example: Creating a general email parser');
 
 /**
  * Provide a data map you want to use everywhere
  *
  * This code should be placed at the initialization of your script/application
  */
-Text::global()->repository()->provide(
+TextFromFile::global()->repository()->provide(
     GlobalDataMap::class
 );
 
@@ -25,27 +24,16 @@ Text::global()->repository()->provide(
 $order = new StdClass;
 $order->id = 625322;
 $order->totalAmount = 299;
+$order->locale = 'da_DK';
 
 $orderMap = new OrderDataMap($order);
 
 /**
  * Initialize the text
  */
+$template = new EmailTemplate(__DIR__ . '/new_order.html');
 
-// Put to file and show as templates
-$text = new EmailTemplate(__DIR__ . '/email.html');
+$template->repository()->in('order')->provide($orderMap);
+$template->repository()->root()->set('customer.name', 'John Doe');
 
-
-class EmailParserService
-{
-    public function parse(string $template)
-    {
-        
-    }
-}
-
-// $text->repository()->provide($orderMap);
-
-// EXAMPLIFY CUSTOMER LOCALE
-
-text($text);
+text($template);

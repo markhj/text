@@ -19,3 +19,6 @@ This library requires **PHP 8.0+** and the **mbstring** extension.
 composer require markhj/text
 ```
 Composer 2 is required to install this package.
+
+## Samples
+You can explore some simple and more advanced samples in the `samples/` directory.

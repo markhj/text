@@ -68,7 +68,9 @@ class OrderDataMap extends DataMap
 {
 	public function __construct(
 		protected Order $order
-	) { }
+	) {
+		parent::__construct();
+	}
 
 	#[DataMapKey]
 	public function amount(): string
@@ -77,6 +79,8 @@ class OrderDataMap extends DataMap
 	}
 }
 ```
+
+It's very important to always include the `parent::__construct()` line. If you omit this the code is very likely to break.
 
 The smart thing is that since `amount` is a method you can make the output conditional. For example, if the you read on the order that it's Danish you might want to format the number in one way, but if it's American, another.
 
