@@ -3,8 +3,8 @@
 namespace Markhj\Text;
 
 use Markhj\Text\Cursor;
-use Markhj\Text\Assets\FragmentCollection;
 use Markhj\Text\Assets\ExpressionPattern;
+use Markhj\Text\Assets\Collections\FragmentCollection;
 use Markhj\Text\Assets\Fragments\TextFragment;
 use Markhj\Text\Assets\Fragments\ExpressionFragment;
 

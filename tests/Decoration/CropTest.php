@@ -24,6 +24,16 @@ class CropTest extends BaseTest
 			'ello',
 			(string) (new Text('Hello world'))->revise()->crop(1, 4)
 		);
+
+		$this->assertEquals(
+			'world',
+			(string) (new Text('Hello world'))->revise()->crop(6, 5)
+		);
+
+		$this->assertEquals(
+			'world',
+			(string) (new Text('Hello world'))->revise()->crop(6)
+		);
 	}
 
 	/**

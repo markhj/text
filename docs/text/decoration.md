@@ -40,11 +40,6 @@ public function trimLeft(string $char = ' '): Decoration
 public function trimRight(string $char = ' '): Decoration
 ```
 
-## substr
-```php
-public function substr(int $offset, ?int $length = null): Decoration
-```
-
 ## studly
 ```php
 public function studly(): Decoration

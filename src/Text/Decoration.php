@@ -36,7 +36,10 @@ class Decoration
 		return $this->string;
 	}
 
-	public function crop(int $from, int $length): Decoration
+	public function crop(
+		int $from,
+		?int $length = null
+	): Decoration
 	{
 		return $this->set(mb_substr($this->get(), $from, $length));
 	}
@@ -54,11 +57,6 @@ class Decoration
 	public function trimRight(string $char = ' '): Decoration
 	{
 		return $this->set(rtrim($this->get(), $char));
-	}
-
-	public function substr(int $offset, ?int $length = null): Decoration
-	{
-		return $this->set(mb_substr($this->get(), $offset, $length));
 	}
 
 	public function studly(): Decoration

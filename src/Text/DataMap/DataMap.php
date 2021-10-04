@@ -2,7 +2,7 @@
 
 namespace Markhj\Text\DataMap;
 
-use Markhj\Text\Assets\DataCollection;
+use Markhj\Text\Assets\Collections\DataCollection;
 use Markhj\Text\Assets\AttributeReader;
 use Markhj\Text\Assets\AttributeContainer;
 use Markhj\Text\Attributes\DataMap\DataMapKey;

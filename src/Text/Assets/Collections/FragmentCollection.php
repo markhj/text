@@ -1,6 +1,6 @@
 <?php
 
-namespace Markhj\Text\Assets;
+namespace Markhj\Text\Assets\Collections;
 
 use Markhj\Collection\Collection;
 use Markhj\Text\Assets\Fragments\Fragment;

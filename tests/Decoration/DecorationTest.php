@@ -49,29 +49,6 @@ class DecorationTest extends BaseTest
 		);
 	}
 
-	
-	/**
-	 * @test
-	 * @return void
-	 */
-	public function substr(): void
-	{
-		$this->assertEquals(
-			'Hello',
-			(string) (new Text('Hello world'))->revise()->substr(0, 5)
-		);
-
-		$this->assertEquals(
-			'world',
-			(string) (new Text('Hello world'))->revise()->substr(6, 5)
-		);
-
-		$this->assertEquals(
-			'world',
-			(string) (new Text('Hello world'))->revise()->substr(6)
-		);
-	}
-
 	/**
 	 * @test
 	 */

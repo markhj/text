@@ -6,11 +6,10 @@ use Markhj\Collection\Collection;
 use Markhj\Text\Exceptions\IndexNotSelectedException;
 use Markhj\Text\Exceptions\MissingExpressionNameException;
 use Markhj\Text\Assets\Fragments\Fragment;
-use Markhj\Text\Assets\Collections\UseCollection;
+use Markhj\Text\Assets\Collections\FragmentCollection;
 use Markhj\Text\Assets\Instruction;
 use Markhj\Text\Assets\ExpressionPattern;
 use Markhj\Text\Assets\ExpressionSignatureConverter;
-use Markhj\Text\Assets\FragmentCollection;
 use Markhj\Text\Assets\Repository;
 use Markhj\Text\Assets\TextGlobal;
 use Markhj\Text\Assets\UseToInstruction;
@@ -29,7 +28,6 @@ class Text implements RegistersUse
 	protected $whenMissingParser;
 	protected int|string|null $index = null;
 	protected Collection $instructions;
-	protected UseCollection $useCollection;
 
 	protected static TextGlobal $global;
 
@@ -40,7 +38,6 @@ class Text implements RegistersUse
 		$this->template = $this->encode($template);
 		$this->instructions = new Collection;
 		$this->repository = new Repository;
-		$this->useCollection = new UseCollection;
 
 		$this->whenMissingParser = function(
 			Fragment $fragment,
