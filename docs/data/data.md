@@ -14,7 +14,9 @@ Here `test` is the key, the `example` is the value.
 
 ## Usage
 ### Print
-The native `p` parser will output a variable. Example:
+The native `p` parser will output a variable.
+
+Example:
 
 ```php
 $text = new Text('Hello p:(customer.name)!');
@@ -23,13 +25,13 @@ $text->repository()->set('customer.name', 'John Doe');
 var_dump($text->parse()); // Hello John Doe!
 ```
 
-### Repository argument
+### Access repository
 You can also access the repository in parser functions.
 
 ```php
-$text = new Text('Hello custom:(customer.name)!');
+$text = new Text('Hello myfunction:(customer.name)!');
 
-$text->on('custom')->do(function($fragment, $repository) {
+$text->on('myfunction')->do(function($fragment, $repository) {
 	return $repository->get('customer.name');
 });
 

@@ -25,10 +25,3 @@ $text = new Text('Hello world');
 
 (string) $text; // Hello world
 ```
-
-## Template
-The string you constructed the `Text` object with is refered to as the `template`. It's also possible to change the template itself. To retrieve the template use `Text::template` method.
-
-```php
-$text->template(); // HelloWorld
-```

@@ -8,11 +8,6 @@ nav:
     - 'Text from file': 'text/textfromfile.md'
     - 'Revise': 'text/decoration.md'
     - 'Getters': 'text/getters.md'
-  - 'Iterators':
-    - 'ForEach': 'iterators/foreach.md'
-    - 'Map': 'iterators/map.md'
-    - 'Rebase': 'iterators/rebase.md'
-    - 'Differences': 'iterators/differences.md'
   - 'Data':
     - 'Basics': 'data/data.md'
     - 'Data maps': 'data/datamaps.md'
@@ -25,6 +20,11 @@ nav:
     - 'Native parsers': 'parsers/native-parsers.md'
     - 'Parser class': 'parsers/custom-parser.md'
     - 'Global parsers': 'parsers/global-parser.md'
+  - 'Iterators':
+    - 'ForEach': 'iterators/foreach.md'
+    - 'Map': 'iterators/map.md'
+    - 'Rebase': 'iterators/rebase.md'
+    - 'Differences': 'iterators/differences.md'
   - 'Cursor':
     - 'Getting started': 'cursor/basics.md'
     - 'Navigation': 'cursor/navigation.md'
@@ -36,3 +36,4 @@ nav:
       'Expression patterns':
         - 'Custom pattern': 'expression-patterns/custompattern.md'
         - 'Convert pattern': 'expression-patterns/convertpattern.md'
+      'Encoding': 'advanced/encoding.md'
